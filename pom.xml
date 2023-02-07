@@ -17,6 +17,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit-version>5.9.2</junit-version>
+    <aspectj.version>1.9.19</aspectj.version>
 
   </properties>
 
@@ -58,6 +59,44 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.24.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.4.5</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.maven.plugins</groupId>-->
+<!--      <artifactId>maven-site-plugin</artifactId>-->
+<!--      <version>4.0.0-M4</version>-->
+<!--    </dependency>-->
+
+    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-report-plugin</artifactId>
+      <version>3.0.0-M8</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.9.19</version>
+      <scope>runtime</scope>
+    </dependency>
+
+
 
 
 
@@ -80,10 +119,35 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
+<!--        <plugin>-->
+<!--          <artifactId>maven-surefire-plugin</artifactId>-->
+<!--          <version>2.22.1</version>-->
+<!--        </plugin>-->
+
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>3.0.0-M7</version>
+          <configuration>
+            <testFailureIgnore>false</testFailureIgnore>
+            <argLine>
+              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+            </argLine>
+            <systemProperties>
+              <property>
+                <name>junit.jupiter.extensions.autodetection.enabled</name>
+                <value>true</value>
+              </property>
+            </systemProperties>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>${aspectj.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
+
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
@@ -97,25 +161,36 @@
           <version>2.8.2</version>
         </plugin>
         <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
+<!--        <plugin>-->
+<!--          <artifactId>maven-site-plugin</artifactId>-->
+<!--          <version>3.7.1</version>-->
+<!--        </plugin>-->
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--          <version>3.0.0-M8</version>-->
+<!--        </plugin>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>4.0.0-M3</version>
+        </plugin>
+
+
       </plugins>
     </pluginManagement>
   </build>
 
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>3.0.0-M8</version>
-      </plugin>
+
     </plugins>
   </reporting>
 </project>

@@ -6,28 +6,42 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.example.Lesson4.Functions.isPalindrome;
 
 public class FunctionsTest {
+    private static Logger logger = LoggerFactory.getLogger("FunctionsTest");
+
+
+
      @BeforeAll
      static void beforeAll(){
-         System.out.println("метод выполнится 1 раз перед всеми тестами");
+         logger.info("метод выполнится 1 раз перед всеми тестами");
+
 
     }
+
+    //TRACE, DEBUG, WARN, INFO, ERROR -уровни логирования
+
+
     @BeforeEach
     void beforeEach(){
-        System.out.println("метод выполнится перед каждым тестом");
+        logger.error("метод выполнится перед каждым тестом");
+
     }
 
 
     @Test
     @DisplayName("Метод проверки палиндрома с нечетным колвом символов, переданного в метод isPalindrome")
     void givenPalindromeMethodThenTrue() {
-        boolean result = isPalindrome("1234321");
-        Assertions.assertTrue(result);
+        //boolean result = isPalindrome("1234321");
+       // Assertions.assertTrue(result);
+        assertThat(isPalindrome("1234321")).isTrue(); //проверка, что это палиндром
         //Assertions.assertEquals(true, result);
 
 
@@ -50,6 +64,7 @@ public class FunctionsTest {
     }
 
     @ParameterizedTest
+    @Tag("smoke")
     @MethodSource("catAndAgeDataProvider")
 void catEqualsAgeTest(Cat cat, Integer age){
          Assertions.assertEquals(cat.getAge(), age);
