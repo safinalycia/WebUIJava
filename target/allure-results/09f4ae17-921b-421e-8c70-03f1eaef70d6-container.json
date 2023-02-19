@@ -1,0 +1,1 @@
+{"uuid":"09f4ae17-921b-421e-8c70-03f1eaef70d6","name":"AfishaTest","children":["c6605ea0-4caa-4dbe-bae1-e592a3b374dc","1b557907-571c-49c3-b61e-d657f537d15b"],"befores":[{"name":"registerDriver","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1676832191702,"stop":1676832191824}],"afters":[],"start":1676832191701,"stop":1676832413989}

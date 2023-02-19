@@ -1,0 +1,1 @@
+{"uuid":"269564e7-10c6-45b8-8103-00d65ef3f29e","name":"whereDeleteBallThenException()","children":["50107175-2de5-46bb-97da-82699e97fa08"],"befores":[{"name":"createEmptyBox","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1676832062676,"stop":1676832062677}],"afters":[],"start":1676832062670,"stop":1676832062688}

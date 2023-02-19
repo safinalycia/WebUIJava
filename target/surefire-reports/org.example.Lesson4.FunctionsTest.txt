@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: org.example.AppTest
+Test set: org.example.Lesson4.FunctionsTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.example.AppTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.312 s - in org.example.Lesson4.FunctionsTest
